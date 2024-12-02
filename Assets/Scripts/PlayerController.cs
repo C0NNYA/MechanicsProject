@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         rb2D = gameObject.GetComponent<Rigidbody2D>();
 
         moveSpeed = 1f;
-        jumpForce = 60f;
+        jumpForce = 30f;
         isJumping = false;
     }
 
@@ -34,6 +34,26 @@ public class Player : MonoBehaviour
         if (moveHorizontal > 0.1f || moveHorizontal < -0.1f)
         {
             rb2D.AddForce(new Vector2(moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
+        }
+
+        if (!isJumping && moveVertical > 0.1f)
+        {
+            rb2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            isJumping = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isJumping = true;
         }
     }
 }
