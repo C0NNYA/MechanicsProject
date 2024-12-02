@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager { get; private set; }
 
-    public UnitHealth _playerHealth = new UnitHealth(10, 10);
+    public UnitHealth _playerHealth = new UnitHealth(10, 10); // Take this for use in enemy behaviour scripts
 
     void Awake()
     {

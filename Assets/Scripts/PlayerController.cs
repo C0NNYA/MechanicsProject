@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     private bool isJumping;
     private float moveHorizontal;
     private float moveVertical;
+    bool facingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,24 @@ public class Player : MonoBehaviour
         {
             rb2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
         }
+
+        if (moveHorizontal > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (moveHorizontal < 0 && facingRight)
+        {
+            Flip();
+        }
+    }
+
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+
+        facingRight = !facingRight;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
