@@ -4767,7 +4767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 421234679}
-  inventorySize: 10
+  inventorySize: 5
 --- !u!1 &180700434
 GameObject:
   m_ObjectHideFlags: 0
