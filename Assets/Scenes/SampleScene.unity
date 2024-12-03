@@ -4767,7 +4767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 421234679}
-  inventorySize: 5
+  inventorySize: 30
 --- !u!1 &180700434
 GameObject:
   m_ObjectHideFlags: 0
@@ -67938,6 +67938,10 @@ PrefabInstance:
       propertyPath: title
       value: Fish Stick
       objectReference: {fileID: 0}
+    - target: {fileID: 5171873946639677444, guid: ff6aa16319cee5b41b31498483ce4d7d, type: 3}
+      propertyPath: image2
+      value: 
+      objectReference: {fileID: 21300000, guid: aabee34d767efb243b3410f26ea646b9, type: 3}
     - target: {fileID: 5171873946639677444, guid: ff6aa16319cee5b41b31498483ce4d7d, type: 3}
       propertyPath: quantity
       value: 69
