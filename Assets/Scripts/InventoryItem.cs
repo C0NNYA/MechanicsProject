@@ -52,9 +52,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHand
             
            public void OnPointerClick(PointerEventData pointerData)
     {
-        if (empty)
-            return;
-              if (pointerData.button == PointerEventData.InputButton.Right)
+                     if (pointerData.button == PointerEventData.InputButton.Right)
         {
             OnRightMouseBtnClick?.Invoke(this);
         }
