@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
     bool facingRight = true;
+    private Animator anim;
+
+    public coinManager cm;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour
         moveSpeed = 1.5f;
         jumpForce = 30f;
         isJumping = false;
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,6 +34,7 @@ public class Player : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
+        anim.SetBool("isWalking", moveHorizontal != 0);
     }
 
     void FixedUpdate()
@@ -68,6 +74,11 @@ public class Player : MonoBehaviour
         {
             isJumping = false;
         }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            cm.coinCount++;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -76,4 +87,5 @@ public class Player : MonoBehaviour
             isJumping = true;
         }
     }
+    
 }
