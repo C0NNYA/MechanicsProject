@@ -15,6 +15,9 @@ public class InventoryPage : MonoBehaviour
     [SerializeField]
     private InventoryDescription itemDescription;
 
+    [SerializeField]
+    private MouseFollower mouseFollower;
+
     List<InventoryItem> listOfItems = new List<InventoryItem>();
 
     public Sprite image;
@@ -24,6 +27,7 @@ public class InventoryPage : MonoBehaviour
     private void Awake()
     {
         Hide();
+        mouseFollower.Toggle(false);
         itemDescription.ResetDescription();
     }
 
@@ -50,7 +54,8 @@ public class InventoryPage : MonoBehaviour
 
     private void HandleEndDrag(InventoryItem item)
     {
-        
+        mouseFollower.Toggle(false);
+
     }
 
     private void HandleSwap(InventoryItem item)
@@ -60,7 +65,9 @@ public class InventoryPage : MonoBehaviour
 
     private void HandleBeginDrag(InventoryItem item)
     {
-        
+        mouseFollower.Toggle(true);
+        mouseFollower.SetData(image, quantity);
+
     }
 
     private void HandleItemSelection(InventoryItem item)
